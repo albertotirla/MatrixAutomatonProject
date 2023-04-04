@@ -27,13 +27,13 @@ while (q.Count > 0)
 {
     (int i, int j) = q.Dequeue();
     Console.WriteLine($"what should happen to element {a[i, j]}? \n Press a for adjacent movement, d for diagonal movement.");
-    char c = (char)Console.Read();
+    string c = Console.ReadLine();
     switch (c)
     {
-        case 'a':
+        case "a":
             muta_adiacent(i, j);
             break;
-        case 'd':
+        case "d":
             muta_diagonal(i, j);
             break;
         default:
@@ -53,9 +53,47 @@ foreach (var item in s)
 //functions
 void muta_adiacent(int i, int j)
 {
-    throw new NotImplementedException();
+    if (j + 1 < n && !s.Contains(a[i, j + 1]))
+    {
+        q.Enqueue((i, j + 1));
+        s.Add(a[i, j + 1]);
+    }
+    if (j - 1 >= 0 && !s.Contains(a[i, j - 1]))
+    {
+        q.Enqueue((i, j - 1));
+        s.Add(a[i, j - 1]);
+    }
+    if (i + 1 < n && !s.Contains(a[i + 1, j]))
+    {
+        q.Enqueue((i + 1, j));
+        s.Add(a[i + 1, j]);
+    }
+    if (i - 1 >= 0 && !s.Contains(a[i - 1, j]))
+    {
+        q.Enqueue((i - 1, j));
+        s.Add(a[i - 1, j]);
+    }
 }
 void muta_diagonal(int i, int j)
 {
-    throw new NotImplementedException();
+    if (i + 1 < n && j + 1 < n && !s.Contains(a[i + 1, j + 1]))
+    {
+        q.Enqueue((i + 1, j + 1));
+        s.Add(a[i + 1, j + 1]);
+    }
+    if (i - 1 >= 0 && j - 1 >= 0 && !s.Contains(a[i - 1, j - 1]))
+    {
+        q.Enqueue((i - 1, j - 1));
+        s.Add(a[i - 1, j - 1]);
+    }
+    if (i + 1 < n && j - 1 >= 0 && !s.Contains(a[i + 1, j - 1]))
+    {
+        q.Enqueue((i + 1, j - 1));
+        s.Add(a[i + 1, j - 1]);
+    }
+    if (i - 1 >= 0 && j + 1 < n && !s.Contains(a[i - 1, j + 1]))
+    {
+        q.Enqueue((i - 1, j + 1));
+        s.Add(a[i - 1, j + 1]);
+    }
 }
