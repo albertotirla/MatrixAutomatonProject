@@ -9,7 +9,7 @@ Queue<SortedSet<(int, int)>> QD = new();
 int counter = 0;
 Console.Write("n=");
 n = int.Parse(Console.ReadLine());
-int[,] a = new int[n, n];
+string[,] a = new string[n, n];
 // Read matrix a from console
 init_matrix(a, n);
 
@@ -50,7 +50,7 @@ void MapAndPrintSet(SortedSet<(int, int)> set)
     Console.Write(sb.ToString());
 }
 //initialize matrix with user input
-void init_matrix(int[,] a, int n)
+void init_matrix(string[,] a, int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -58,7 +58,7 @@ void init_matrix(int[,] a, int n)
         string[] input = Console.ReadLine().Split(' ');
         for (int j = 0; j < n; j++)
         {
-            a[i, j] = int.Parse(input[j]);
+            a[i, j] = input[j];
         }
     }
     Console.WriteLine("matrix reading finished successfully");
