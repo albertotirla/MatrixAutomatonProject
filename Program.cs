@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-SortedSet<(int, int)> s = new();
+
 int n;
 Queue<SortedSet<(int, int)>> QA = new();
 Queue<SortedSet<(int, int)>> QD = new();
 int counter = 0;
 Console.Write("n=");
-n = int.Parse(Console.ReadLine());
+n = int.Parse(Console.ReadLine()!);
 string[,] a = new string[n, n];
 // Read matrix a from console
 init_matrix(a, n);
 
-int i = 0, j = 0;
 Console.WriteLine("S | a | d");
 var FirstA = GasesteAdiacent(new() { (0, 0) });
 var FirstD = GasesteDiagonal(new() { (0, 0) });
@@ -46,7 +45,7 @@ void MapAndPrintSet(SortedSet<(int, int)> set)
         sb.Append(a[row, col]).Append(", ");
     }
     sb.Length -= 2; // Remove the trailing comma and space
-    sb.Append("}");
+    sb.Append('}');
     Console.Write(sb.ToString());
 }
 //initialize matrix with user input
@@ -55,7 +54,7 @@ void init_matrix(string[,] a, int n)
     for (int i = 0; i < n; i++)
     {
         Console.WriteLine($"type line {i + 1}, then press enter");
-        string[] input = Console.ReadLine().Split(' ');
+        string[] input = Console.ReadLine()!.Split(' ');
         for (int j = 0; j < n; j++)
         {
             a[i, j] = input[j];
